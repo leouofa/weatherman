@@ -1,7 +1,7 @@
 class ForecastGetter
   def initialize(lat:, lng:)
     @forecast_resp =
-      HTTParty.get("https://api.openweathermap.org/data/2.5/forecast?lat=#{lat}&lon=#{lng}&appid=#{ENV['WEATHER_API']}")
+      HTTParty.get("https://api.openweathermap.org/data/2.5/forecast?units=imperial&lat=#{lat}&lon=#{lng}&appid=#{ENV['WEATHER_API']}")
     # active date processing
 
     active_date = nil
@@ -32,7 +32,7 @@ class ForecastGetter
     formatted_forecast
   end
 
-  def formatted_results
+  def results
     @formatted_results
   end
 

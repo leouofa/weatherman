@@ -15,7 +15,6 @@ module PagesHelper
   def formatted_temp(temp:, label:)
     return '' unless temp
 
-    # removing first character
-    "#{label}: #{temp.to_s[1..-1]}°"
+    "#{label}: #{temp}°"
   end
 end

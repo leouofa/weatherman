@@ -3,12 +3,19 @@ class PagesController < ApplicationController
   end
 
   def results
-    @geocoding_resp =
-      HTTParty.get("https://maps.googleapis.com/maps/api/geocode/json?key=#{ENV['GOOGLE_MAPS_API']}&censor=false&address=#{params[:zip]}")
+    coordinates = Geocoder.new.geocode(
+      address: params[:address],
+      city: params[:city],
+      state: params[:state],
+      zip: params[:zip],
+      country: params[:country]
+    )
 
-    coordinates = @geocoding_resp['results'][0]['geometry']['location']
-
-    @results = ForecastGetter.new(lat: coordinates['lat'], lng: coordinates['lng']).formatted_results
+    @results = if coordinates
+                  ForecastGetter.new(lat: coordinates['lat'], lng: coordinates['lng']).results
+               else
+                 nil
+               end
   end
 
   private
