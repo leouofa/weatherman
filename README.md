@@ -1,24 +1,10 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The weatherman app tells you the weather for a given address.
 
-Things you may want to cover:
+## Setup
+1. Pull the Repo with ```git clone repo folder```
+2. Go inside the ```folder``` and run ```bundle install```
+2. Setup the database with ```bin/rails db:create```
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Start the Project with ```foreman start -f Procfile.dev ```
