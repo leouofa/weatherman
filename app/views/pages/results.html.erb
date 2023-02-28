@@ -1,13 +1,6 @@
 <h2 class="font-bold text-center text-xl tracking-light pb-5 border-b border-gray-50 mb-5">5-day Weather Forecast</h2>
 <!--- Results Container --->
 <div class="shadow-xl p-10 rounded-md w-2/3 mx-auto">
-  <%#= params.inspect %>
-<!--  <hr>-->
-  <%#= @geocoding_resp.inspect %>
-<!--  <hr>-->
-<!--  <hr>-->
-<!--  <hr>-->
-  <%#= @parsed_results.inspect %>
     <% @parsed_results.each do |forecast| %>
       <div class="mb-20 flex flex-col">
         <div class="border-b border-gray-50"><%= formatted_weather_date(forecast["dt"]) %></div>
