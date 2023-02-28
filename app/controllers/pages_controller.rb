@@ -1,13 +1,9 @@
 class PagesController < ApplicationController
-  before_action :search_params, only: :results
   def index
   end
 
   def results
-
-  end
-
-  def search_params
-    params.permit(:city)
+    @geocoding_resp =
+      HTTParty.get("https://maps.googleapis.com/maps/api/geocode/json?key=#{ENV['GOOGLE_MAPS_API']}&censor=false&address=#{params[:zip]}")
   end
 end
