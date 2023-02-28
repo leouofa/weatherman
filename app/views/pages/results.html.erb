@@ -1,9 +1,15 @@
-<h2 class="font-bold text-center text-xl tracking-light pb-5 border-b border-gray-50 mb-5">Search Reults</h2>
+<h2 class="font-bold text-center text-xl tracking-light pb-5 border-b border-gray-50 mb-5">5-day Weather Forecast</h2>
 <!--- Results Container --->
 <div class="shadow-xl p-10 rounded-md w-2/3 mx-auto">
-  <%= params.inspect %>
-  <hr>
-  <%= @geocoding_resp.inspect %>
+    <% @parsed_results.each do |forecast| %>
+      <div class="mb-20 flex flex-col">
+        <div class="border-b border-gray-50"><%= formatted_weather_date(forecast["dt"]) %></div>
+        <div>Temp: <%= forecast["main"]["temp"] %></div>
+        <div>Temp Min: <%= forecast["main"]["temp_min"] %></div>
+        <div>Temp Max: <%= forecast["main"]["temp_max"] %></div>
+      </div>
+      <%= forecast.inspect %>
+  <% end %>
 </div>
 <!--- Search Again --->
 <div class="w-2/3 mx-auto mt-20 flex justify-center">
