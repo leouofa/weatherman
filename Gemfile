@@ -29,6 +29,7 @@ gem 'httparty'
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem 'dotenv-rails'
+  gem "byebug"
 end
 
 group :development do
