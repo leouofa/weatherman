@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    @font-face {
+        font-family: 'Inter var';
+        src: url('/public/fonts/Inter-var.ttf') format('ttf');
+        font-weight: 400;
+        font-style: normal;
+    }
+}
+
 /*
 
 @layer components {

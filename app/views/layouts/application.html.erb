@@ -12,8 +12,22 @@
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <main class="container mx-auto mt-10 px-5 flex flex-col">
+      <!-- Header -->
+      <div class="w-full">
+        <h2 class="font-bold text-xl text-center">🌤️️❄️🌧️️</h2>
+        <div class="mx-auto w-2/3 border-t border-gray-200 mt-5 mb-5"></div>
+        <h1 class="font-bold text-4xl text-center mb-20">Weatherman 🔮</h1>
+      </div>
+
       <%= yield %>
+
+      <!-- Footer -->
+      <div class="w-full">
+        <div class="mx-auto w-2/3 border-t border-gray-200 mt-10 mb-5"></div>
+        <h2 class="font-bold text-xl text-center">🌤️️❄️🌧️️</h2>
+      </div>
+
     </main>
   </body>
 </html>
