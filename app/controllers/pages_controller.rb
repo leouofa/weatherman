@@ -16,7 +16,7 @@ class PagesController < ApplicationController
     if params[:zip].present?
       @cached = true if Rails.cache.exist?(params[:zip])
 
-      @results = Rails.cache.fetch(params[:zip], expires_in: 10.seconds) do
+      @results = Rails.cache.fetch(params[:zip], expires_in: 30.minutes) do
                   if coordinates
                     ForecastGetter.new(lat: coordinates['lat'], lng: coordinates['lng']).results
                   else
