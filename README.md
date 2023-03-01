@@ -3,8 +3,8 @@
 The weatherman app tells you the weather for a given address.
 
 ## Requirements
-- [OpenWeatherMap](https://www.openweathermap.org) API Key.
-- [Google API](https://developers.google.com/maps/documentation/javascript/get-api-key) API Key.
+- [OpenWeatherMap API](https://www.openweathermap.org) Key.
+- [Google API](https://developers.google.com/maps/documentation/javascript/get-api-key) Key.
 - PostresSQL
 
 ## Setup
@@ -16,7 +16,6 @@ git clone repo folder
 
 2. Go inside the ```folder``` you just created and run 
 ```bash
-cd folder
 bundle install
 ```
 
@@ -38,3 +37,6 @@ To start the project execute
 ```bash
 foreman start -f Procfile.dev 
 ```
+
+## Testing
+Run ```rspec``` to execute the test suite.
