@@ -8,12 +8,15 @@ class Geocoder
     geocoded_address = String.new
     geocoded_address << "#{address}. "   if address
     geocoded_address << "#{city}, #{state} "if city && state
+    geocoded_address << "#{city} "if city && !state
+    geocoded_address << "#{state} "if !city && state
     geocoded_address << zip if zip
     geocoded_address << " #{country}" if country
 
     rsp = HTTParty.get("#{@api_str}#{geocoded_address}")
 
     return false if rsp['results'].blank?
-    coordinates = rsp['results'][0]['geometry']['location']
+
+    rsp['results'][0]['geometry']['location']
   end
 end
