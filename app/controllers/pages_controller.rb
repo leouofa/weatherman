@@ -5,33 +5,31 @@ class PagesController < ApplicationController
   def results
     @cached = false
 
+    coordinates = Geocoder.new.geocode(
+      address: params[:address],
+      city: params[:city],
+      state: params[:state],
+      zip: params[:zip],
+      country: params[:country]
+    )
+
     if params[:zip].present?
       @cached = true if Rails.cache.exist?(params[:zip])
 
       @results = Rails.cache.fetch(params[:zip], expires_in: 10.seconds) do
-        coordinates = Geocoder.new.geocode(
-          address: params[:address],
-          city: params[:city],
-          state: params[:state],
-          zip: params[:zip],
-          country: params[:country]
-        )
-        coordinates ? ForecastGetter.new(lat: coordinates['lat'], lng: coordinates['lng']).results : nil
+                  if coordinates
+                    ForecastGetter.new(lat: coordinates['lat'], lng: coordinates['lng']).results
+                  else
+                    nil
+                  end
       end
-    else
 
-        coordinates = Geocoder.new.geocode(
-          address: params[:address],
-          city: params[:city],
-          state: params[:state],
-          zip: params[:zip],
-          country: params[:country]
-        )
-        @results = if coordinates
-                     ForecastGetter.new(lat: coordinates['lat'], lng: coordinates['lng']).results
-                   else
-                     nil
-                   end
+    else
+      @results = if coordinates
+                   ForecastGetter.new(lat: coordinates['lat'], lng: coordinates['lng']).results
+                 else
+                   nil
+                 end
     end
   end
 
