@@ -19,6 +19,12 @@ class ForecastGetter
 
   end
 
+  def results
+    @formatted_results
+  end
+
+  private
+
   def format_forecast(forecast)
     formatted_forecast = { temp: nil, temp_min: nil, temp_max: nil }
     formatted_forecast[:date] = forecast["dt"].present? ? forecast["dt"] : nil
@@ -31,9 +37,4 @@ class ForecastGetter
 
     formatted_forecast
   end
-
-  def results
-    @formatted_results
-  end
-
 end
